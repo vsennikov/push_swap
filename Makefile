@@ -1,9 +1,9 @@
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 SRCS = main.c validation.c
 LIBFT_PATH = ./libft
 LIBFT = $(LIBFT_PATH)/libft.a
-INCLUDES = -I.$(LIBFT_PATH)
+INCLUDES = -I$(LIBFT_PATH)
 
 OBJS = $(SRCS:.c=.o)
 
