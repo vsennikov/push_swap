@@ -1,6 +1,6 @@
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -g
-SRCS = main.c validation.c
+SRCS = main.c validation/validation.c validation/helpers_validation.c
 LIBFT_PATH = ./libft
 LIBFT = $(LIBFT_PATH)/libft.a
 INCLUDES = -I$(LIBFT_PATH)

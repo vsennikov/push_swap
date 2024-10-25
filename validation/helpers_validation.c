@@ -1,30 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validation.c                                       :+:      :+:    :+:   */
+/*   helpers_validation.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vsenniko <vsenniko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/24 12:12:47 by vsenniko          #+#    #+#             */
-/*   Updated: 2024/10/24 18:21:05 by vsenniko         ###   ########.fr       */
+/*   Created: 2024/10/25 14:20:33 by vsenniko          #+#    #+#             */
+/*   Updated: 2024/10/25 14:27:36 by vsenniko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 void	free_validation(char **tmp, t_list **lst)
 {
 	int	j;
 
 	j = 0;
-	while (tmp != NULL && tmp[j])
-		free(tmp[j++]);
 	free(tmp);
 	ft_lstclear(lst, free);
 	exit_error();
 }
 
-int	check_if_greater_than_int_max_possibly(char *str, int *i, int sign, char *int_max)
+static int	check_if_greater_than_int_max_possibly(char *str, int *i, int sign,
+		char *int_max)
 {
 	int	j;
 	int	bigger;
@@ -72,34 +71,4 @@ int	valid_input(char *str)
 	if (str[i])
 		return (0);
 	return (1);
-}
-
-void	parse_into_lst(int argc, char **argv, t_list **lst)
-{
-	int		i;
-	int		j;
-	char	**tmp;
-	t_list	*node;
-
-	*lst = NULL;
-	i = 1;
-	while (i < argc)
-	{
-		tmp = ft_split(argv[i], ' ');
-		if (tmp == NULL)
-			free_validation(tmp, lst);
-		j = 0;
-		while (tmp[j])
-		{
-			if (!valid_input(tmp[j]))
-				free_validation(tmp, lst);
-			node = ft_lstnew(tmp[j]);
-			if (node == NULL)
-				free_validation(tmp, lst);
-			ft_lstadd_back(lst, node);
-			j++;
-		}
-		free(tmp);
-		i++;
-	}
 }
