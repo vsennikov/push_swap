@@ -6,39 +6,61 @@
 /*   By: vsenniko <vsenniko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 15:34:37 by vsenniko          #+#    #+#             */
-/*   Updated: 2024/10/25 17:33:28 by vsenniko         ###   ########.fr       */
+/*   Updated: 2024/10/28 12:47:31 by vsenniko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int	swap(t_list **lst)
+char	*swap_a(t_list **lst)
 {
 	t_list	*first;
 	t_list	*second;
 
 	if ((*lst)->next == NULL)
-		return (1);
+		return (0);
 	first = *lst;
 	second = (*lst)->next;
 	first->next = second->next;
 	second->next = first;
 	*lst = second;
-	return (1);
+	return ("sa");
 }
 
-int	swap_both(t_list **lst_a, t_list **lst_b)
+char	*swap_b(t_list **lst)
 {
-	swap(lst_a);
-	swap(lst_b);
-	return (1);
+	t_list	*first;
+	t_list	*second;
+
+	if ((*lst)->next == NULL)
+		return (0);
+	first = *lst;
+	second = (*lst)->next;
+	first->next = second->next;
+	second->next = first;
+	*lst = second;
+	return ("sb");
 }
 
-int	push(t_list **lst_a, t_list **lst_b)
+char	*swap_both(t_list **lst_a, t_list **lst_b)
+{
+	char	*res;
+	res = swap_a(lst_a);
+	if (res == NULL)
+		return (res);
+	res = swap_b(lst_b);
+	if (res == NULL)
+		return (res);
+	return ("ss");
+}
+
+char	*push_a(t_list **lst_a, t_list **lst_b)
 {
 	t_list	*first_a;
 	t_list	*second_a;
 
+	if (lst_a == NULL || *lst_a == NULL)
+		return (0);
 	first_a = *lst_a;
 	second_a = first_a->next;
 	*lst_a = second_a;
@@ -50,58 +72,32 @@ int	push(t_list **lst_a, t_list **lst_b)
 			ft_lstclear(lst_a, free);
 			exit_error();
 		}
-		return (1);
+		return ("pa");
 	}
 	ft_lstadd_front(lst_b, first_a);
-	return (1);
+	return ("pa");
 }
 
-int	rotate(t_list **lst)
+char	*push_b(t_list **lst_b, t_list **lst_a)
 {
-	t_list	*second;
-	t_list	*first;
+	t_list	*first_b;
+	t_list	*second_b;
 
-	if ((*lst)->next == NULL)
-		return (1);
-	first = *lst;
-	second = first->next;
-	first->next = NULL;
-	*lst = second;
-	ft_lstadd_back(lst, first);
-	return (1);
-}
-
-int	rotate_both(t_list **lst_a, t_list **lst_b)
-{
-	rotate(lst_a);
 	if (lst_b == NULL || *lst_b == NULL)
+		return (0);
+	first_b = *lst_b;
+	second_b = first_b->next;
+	*lst_b = second_b;
+	if(*lst_a == NULL)
 	{
-		ft_lstclear(lst_a, free);
-		exit_error();
+		*lst_a = ft_lstnew(first_b->content);
+		if (lst_a == NULL)
+		{
+			ft_lstclear(lst_b, free);
+			exit_error();
+		}
+		return ("pa");
 	}
-	rotate(lst_b);
-	return (1);
-}
-
-int	reverse_rotate(t_list **lst)
-{
-	t_list	*copy;
-	t_list	*last;
-	
-	if ((*lst)->next == NULL)
-		return (1);
-	copy = *lst;
-	last = ft_lstlast(*lst);
-	while (copy->next->next != NULL)
-		copy = copy->next;
-	copy->next = NULL;
-	ft_lstadd_front(lst, last);
-	return (1);
-}
-
-int	reverse_rotate_both(t_list **lst_a, t_list **lst_b)
-{
-	reverse_rotate(lst_a);
-	reverse_rotate(lst_b);
-	return (1);
+	ft_lstadd_front(lst_a, first_b);
+	return ("pa");
 }
