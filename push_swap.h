@@ -6,7 +6,7 @@
 /*   By: vsenniko <vsenniko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 12:03:50 by vsenniko          #+#    #+#             */
-/*   Updated: 2024/10/28 12:47:01 by vsenniko         ###   ########.fr       */
+/*   Updated: 2024/10/28 13:55:32 by vsenniko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ int		valid_input(char *str);
 char	*swap_a(t_list **lst);
 char	*swap_b(t_list **lst);
 char	*swap_both(t_list **lst_a, t_list **lst_b);
-char	*push_a(t_list **lst_a, t_list **lst_b);
-char	*push_b(t_list **lst_b, t_list **lst_a);
+char	*push_a(t_list **lst_b, t_list **lst_a);
+char	*push_b(t_list **lst_a, t_list **lst_b);
 char	*rotate_a(t_list **lst);
 char	*rotate_b(t_list **lst);
 char	*rotate_both(t_list **lst_a, t_list **lst_b);
@@ -37,4 +37,6 @@ char	*reverse_rotate_a(t_list **lst);
 char	*reverse_rotate_b(t_list **lst);
 char	*reverse_rotate_both(t_list **lst_a, t_list **lst_b);
 
+//algo
+void sort_stacks(t_list **lst_a, t_list **lst_b);
 #endif

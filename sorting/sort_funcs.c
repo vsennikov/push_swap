@@ -6,7 +6,7 @@
 /*   By: vsenniko <vsenniko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 15:34:37 by vsenniko          #+#    #+#             */
-/*   Updated: 2024/10/28 12:47:31 by vsenniko         ###   ########.fr       */
+/*   Updated: 2024/10/28 13:53:20 by vsenniko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ char	*swap_both(t_list **lst_a, t_list **lst_b)
 	return ("ss");
 }
 
-char	*push_a(t_list **lst_a, t_list **lst_b)
+char	*push_b(t_list **lst_a, t_list **lst_b)
 {
 	t_list	*first_a;
 	t_list	*second_a;
@@ -72,13 +72,13 @@ char	*push_a(t_list **lst_a, t_list **lst_b)
 			ft_lstclear(lst_a, free);
 			exit_error();
 		}
-		return ("pa");
+		return ("pb");
 	}
 	ft_lstadd_front(lst_b, first_a);
-	return ("pa");
+	return ("pb");
 }
 
-char	*push_b(t_list **lst_b, t_list **lst_a)
+char	*push_a(t_list **lst_b, t_list **lst_a)
 {
 	t_list	*first_b;
 	t_list	*second_b;
