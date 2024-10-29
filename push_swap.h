@@ -6,7 +6,7 @@
 /*   By: vsenniko <vsenniko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 12:03:50 by vsenniko          #+#    #+#             */
-/*   Updated: 2024/10/28 13:55:32 by vsenniko         ###   ########.fr       */
+/*   Updated: 2024/10/29 14:30:28 by vsenniko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,6 @@ char	*reverse_rotate_both(t_list **lst_a, t_list **lst_b);
 
 //algo
 void sort_stacks(t_list **lst_a, t_list **lst_b);
+// void	sort_stacks_a(t_list **lst_a, t_list **lst_b);
+// void	sort_stacks_b(t_list **lst_a, t_list **lst_b);
 #endif
