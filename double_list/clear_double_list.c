@@ -1,25 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_validation.c                                  :+:      :+:    :+:   */
+/*   clear_double_list.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vsenniko <vsenniko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/25 14:20:33 by vsenniko          #+#    #+#             */
-/*   Updated: 2024/11/01 16:35:36 by vsenniko         ###   ########.fr       */
+/*   Created: 2024/11/01 16:30:20 by vsenniko          #+#    #+#             */
+/*   Updated: 2024/11/01 16:42:21 by vsenniko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	free_validation(char **tmp, d_list **lst)
+void	ft_dlstdelone(d_list *lst, void (*del)(void*))
 {
-	int	j;
-
-	j = 0;
-	free(tmp);
-	ft_dlstclear(lst, free);
-	exit_error();
+	if (lst == NULL || del == NULL)
+		return ;
+	del(lst->content);
+	free(lst);
 }
 
+void	ft_dlstclear(d_list **lst, void (*del)(void*))
+{
+	d_list	*current;
+	d_list	*tmp;
 
+	if (lst == NULL || del == NULL)
+		return ;
+	current = *lst;
+	while (current != NULL)
+	{
+		tmp = current;
+		current = current->next;
+		ft_dlstdelone(tmp, del);
+	}
+	*lst = NULL;
+}

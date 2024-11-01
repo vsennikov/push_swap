@@ -6,7 +6,7 @@
 /*   By: vsenniko <vsenniko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 12:03:39 by vsenniko          #+#    #+#             */
-/*   Updated: 2024/11/01 12:42:24 by vsenniko         ###   ########.fr       */
+/*   Updated: 2024/11/01 16:39:53 by vsenniko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ void printlst_int(t_list *lst)
 
 int	main(int argc, char **argv)
 {
-	t_list	*lst;
-	t_list	*lst_b;
+	d_list	*lst;
+	d_list	*lst_b;
 	
 	if (argc < 2)
 		return (1);
@@ -49,9 +49,9 @@ int	main(int argc, char **argv)
 	parse_into_lst(argc, argv, &lst);
 	// ft_printf("List before sorting:\n");
 	// printlst_int(lst);
-	// sort_stacks(&lst, &lst_b);
-	printlst_int(lst);
-	ft_lstclear(&lst, free);
+	sort_stacks(&lst, &lst_b);
+	// printlst_int(lst);
+	ft_dlstclear(&lst, free);
 	return (0);
 	// ft_printf("List after sorting:\n");
 	// printlst_int(lst);

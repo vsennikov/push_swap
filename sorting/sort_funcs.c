@@ -6,43 +6,47 @@
 /*   By: vsenniko <vsenniko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 15:34:37 by vsenniko          #+#    #+#             */
-/*   Updated: 2024/10/28 13:53:20 by vsenniko         ###   ########.fr       */
+/*   Updated: 2024/11/01 16:44:23 by vsenniko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-char	*swap_a(t_list **lst)
+char	*swap_a(d_list **lst)
 {
-	t_list	*first;
-	t_list	*second;
+	d_list	*first;
+	d_list	*second;
 
 	if ((*lst)->next == NULL)
 		return (0);
 	first = *lst;
+	first->prev = second;
 	second = (*lst)->next;
 	first->next = second->next;
 	second->next = first;
+	second->prev = NULL;
 	*lst = second;
 	return ("sa");
 }
 
-char	*swap_b(t_list **lst)
+char	*swap_b(d_list **lst)
 {
-	t_list	*first;
-	t_list	*second;
+	d_list	*first;
+	d_list	*second;
 
 	if ((*lst)->next == NULL)
 		return (0);
 	first = *lst;
+	first->prev = second;
 	second = (*lst)->next;
 	first->next = second->next;
 	second->next = first;
+	second->prev = NULL;
 	*lst = second;
 	return ("sb");
 }
 
-char	*swap_both(t_list **lst_a, t_list **lst_b)
+char	*swap_both(d_list **lst_a, d_list **lst_b)
 {
 	char	*res;
 	res = swap_a(lst_a);
@@ -54,50 +58,52 @@ char	*swap_both(t_list **lst_a, t_list **lst_b)
 	return ("ss");
 }
 
-char	*push_b(t_list **lst_a, t_list **lst_b)
+char	*push_b(d_list **lst_a, d_list **lst_b)
 {
-	t_list	*first_a;
-	t_list	*second_a;
+	d_list	*first_a;
+	d_list	*second_a;
 
 	if (lst_a == NULL || *lst_a == NULL)
 		return (0);
 	first_a = *lst_a;
 	second_a = first_a->next;
+	second_a->prev = NULL;
 	*lst_a = second_a;
 	if(*lst_b == NULL)
 	{
-		*lst_b = ft_lstnew(first_a->content);
+		*lst_b = ft_dlstnew(first_a->content);
 		if (lst_b == NULL)
 		{
-			ft_lstclear(lst_a, free);
+			ft_dlstclear(lst_a, free);
 			exit_error();
 		}
 		return ("pb");
 	}
-	ft_lstadd_front(lst_b, first_a);
+	ft_dlstadd_front(lst_b, first_a);
 	return ("pb");
 }
 
-char	*push_a(t_list **lst_b, t_list **lst_a)
+char	*push_a(d_list **lst_b, d_list **lst_a)
 {
-	t_list	*first_b;
-	t_list	*second_b;
+	d_list	*first_b;
+	d_list	*second_b;
 
 	if (lst_b == NULL || *lst_b == NULL)
 		return (0);
 	first_b = *lst_b;
 	second_b = first_b->next;
+	second_b->prev = NULL;
 	*lst_b = second_b;
 	if(*lst_a == NULL)
 	{
-		*lst_a = ft_lstnew(first_b->content);
+		*lst_a = ft_dlstnew(first_b->content);
 		if (lst_a == NULL)
 		{
-			ft_lstclear(lst_b, free);
+			ft_dlstclear(lst_b, free);
 			exit_error();
 		}
 		return ("pa");
 	}
-	ft_lstadd_front(lst_a, first_b);
+	ft_dlstadd_front(lst_a, first_b);
 	return ("pa");
 }

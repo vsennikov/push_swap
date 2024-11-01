@@ -1,7 +1,8 @@
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -g
 SRCS = main.c validation/validation.c validation/free_validation.c sorting/sort_funcs.c \
-sorting/sort_funcs_1.c sorting/sort_funcs_2.c sorting/algorithms_call.c
+sorting/sort_funcs_1.c sorting/sort_funcs_2.c sorting/algorithms_call.c \
+double_list/clear_double_list.c double_list/double_list.c
 LIBFT_PATH = ./libft
 LIBFT = $(LIBFT_PATH)/libft.a
 INCLUDES = -I $(LIBFT_PATH)

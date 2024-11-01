@@ -6,15 +6,15 @@
 /*   By: vsenniko <vsenniko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 12:12:47 by vsenniko          #+#    #+#             */
-/*   Updated: 2024/11/01 13:06:15 by vsenniko         ###   ########.fr       */
+/*   Updated: 2024/11/01 16:35:12 by vsenniko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-static int	check_and_add_to_lst(t_list **lst, t_list *node, int *tmp)
+static int	check_and_add_to_lst(d_list **lst, d_list *node)
 {
-	t_list	*current;
+	d_list	*current;
 
 	if (*lst == NULL)
 	{
@@ -24,20 +24,21 @@ static int	check_and_add_to_lst(t_list **lst, t_list *node, int *tmp)
 	current = *lst;
 	while (current->next != NULL)
 	{
-		if (*tmp == *(int *)(current->content))
-			return (free(tmp), 0);
+		if (*(int *)node->content == *(int *)(current->content))
+			return (free(node), 0);
 		current = current->next;
 	}
 	if (current->next == NULL)
 	{
-		if (*tmp == *(int *)(current->content))
-			return (free(tmp), 0);
+		if (*(int *)node->content == *(int *)(current->content))
+			return (free(node), 0);
 	}
 	current->next = node;
+	// ft_printf("Put into the list value: %d\n", *(int *)current->next->content);
 	return (1);
 }
 
-static int	convert_and_check(t_list **lst, t_list *node, int real_len)
+static int	convert_and_check(d_list **lst, d_list *node, int real_len)
 {
 	int		*tmp;
 
@@ -57,7 +58,7 @@ static int	convert_and_check(t_list **lst, t_list *node, int real_len)
 	*tmp = ft_atoi((char *)node->content);
 	free(node->content);
 	node->content = tmp;
-	return (check_and_add_to_lst(lst, node, tmp));
+	return (check_and_add_to_lst(lst, node));
 }
 
 int	valid_input(char *str)
@@ -85,28 +86,43 @@ int	valid_input(char *str)
 	return (len);
 }
 
-static void	valid_and_put(char **tmp, int j, t_list **lst)
+// void print_tmp(char **tmp)
+// {
+// 	int	i;
+
+// 	ft_printf("Printing tmp after split:\n");
+// 	i = 0;
+// 	while (tmp[i])
+// 	{
+// 		ft_printf("%s\n", tmp[i]);
+// 		i++;
+// 	}
+// 	ft_printf("Finished\n\n");
+// }
+
+static void	valid_and_put(char **tmp, int j, d_list **lst)
 {
-	t_list	*node;
+	d_list	*node;
 	int		real_len;
 
 	while (tmp[j])
 	{
+		// ft_printf("tmp[%d] = %s\n", j, tmp[j]);
 		real_len = valid_input(tmp[j]);
 		if (real_len == 0)
 			free_validation(tmp, lst);
-		node = ft_lstnew(tmp[j++]);
+		node = ft_dlstnew(tmp[j++]);
 		if (node == NULL)
 			free_validation(tmp, lst);
 		if (!convert_and_check(lst, node, real_len))
 		{
-			free(node);
+			// free(node);
 			free_validation(tmp, lst);
 		}
 	}
 }
 
-void	parse_into_lst(int argc, char **argv, t_list **lst)
+void	parse_into_lst(int argc, char **argv, d_list **lst)
 {
 	int		i;
 	int		j;
@@ -122,6 +138,7 @@ void	parse_into_lst(int argc, char **argv, t_list **lst)
 		j = 0;
 		valid_and_put(tmp, j, lst);
 		free(tmp);
+		// ft_printf("i = %d\n", i);
 		i++;
-	}
+	}	
 }
