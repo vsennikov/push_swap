@@ -2,10 +2,10 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror -g
 SRCS = main.c validation/validation.c validation/free_validation.c sorting/sort_funcs.c \
 sorting/sort_funcs_1.c sorting/sort_funcs_2.c sorting/algorithms_call.c \
-double_list/clear_double_list.c double_list/double_list.c
-LIBFT_PATH = ./libft
+double_list/clear_double_list.c double_list/double_list.c sorting/pre_sort.c
+LIBFT_PATH = libft
 LIBFT = $(LIBFT_PATH)/libft.a
-INCLUDES = -I $(LIBFT_PATH)
+INCLUDES = -I./$(LIBFT_PATH)
 
 OBJS = $(SRCS:.c=.o)
 
@@ -14,9 +14,10 @@ NAME = push_swap
 all: $(LIBFT) $(NAME)
 
 $(LIBFT):
-	$(MAKE) -C $(LIBFT_PATH)
+	$(MAKE) -C ./libft
+	
 $(NAME): $(OBJS) $(LIBFT)
-	$(CC) $(CFLAGS) $(OBJS) -L$(LIBFT_PATH) -lft -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) -L./$(LIBFT_PATH) -lft -o $(NAME)
 
 %.o: %.c
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@

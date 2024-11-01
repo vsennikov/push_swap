@@ -6,7 +6,7 @@
 /*   By: vsenniko <vsenniko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 15:34:37 by vsenniko          #+#    #+#             */
-/*   Updated: 2024/11/01 16:44:23 by vsenniko         ###   ########.fr       */
+/*   Updated: 2024/11/01 17:51:02 by vsenniko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ char	*swap_a(d_list **lst)
 	if ((*lst)->next == NULL)
 		return (0);
 	first = *lst;
-	first->prev = second;
 	second = (*lst)->next;
+	first->prev = second;
 	first->next = second->next;
 	second->next = first;
 	second->prev = NULL;
@@ -37,8 +37,8 @@ char	*swap_b(d_list **lst)
 	if ((*lst)->next == NULL)
 		return (0);
 	first = *lst;
-	first->prev = second;
 	second = (*lst)->next;
+	first->prev = second;
 	first->next = second->next;
 	second->next = first;
 	second->prev = NULL;
@@ -49,6 +49,7 @@ char	*swap_b(d_list **lst)
 char	*swap_both(d_list **lst_a, d_list **lst_b)
 {
 	char	*res;
+
 	res = swap_a(lst_a);
 	if (res == NULL)
 		return (res);
@@ -66,10 +67,15 @@ char	*push_b(d_list **lst_a, d_list **lst_b)
 	if (lst_a == NULL || *lst_a == NULL)
 		return (0);
 	first_a = *lst_a;
-	second_a = first_a->next;
-	second_a->prev = NULL;
-	*lst_a = second_a;
-	if(*lst_b == NULL)
+	if (first_a->next != NULL)
+	{
+		second_a = first_a->next;
+		second_a->prev = NULL;
+		*lst_a = second_a;
+	}
+	else
+		*lst_a = NULL;
+	if (*lst_b == NULL)
 	{
 		*lst_b = ft_dlstnew(first_a->content);
 		if (lst_b == NULL)
@@ -91,10 +97,15 @@ char	*push_a(d_list **lst_b, d_list **lst_a)
 	if (lst_b == NULL || *lst_b == NULL)
 		return (0);
 	first_b = *lst_b;
-	second_b = first_b->next;
-	second_b->prev = NULL;
-	*lst_b = second_b;
-	if(*lst_a == NULL)
+	if (first_b->next != NULL)
+	{
+		second_b = first_b->next;
+		second_b->prev = NULL;
+		*lst_b = second_b;
+	}
+	else 
+		*lst_b = NULL;
+	if (*lst_a == NULL)
 	{
 		*lst_a = ft_dlstnew(first_b->content);
 		if (lst_a == NULL)

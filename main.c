@@ -6,7 +6,7 @@
 /*   By: vsenniko <vsenniko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 12:03:39 by vsenniko          #+#    #+#             */
-/*   Updated: 2024/11/01 16:39:53 by vsenniko         ###   ########.fr       */
+/*   Updated: 2024/11/01 18:27:59 by vsenniko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,24 +18,24 @@ void	exit_error()
 	exit(1);
 }
 
-void printlst(t_list *lst)
-{
-	while (lst)
-	{
-		ft_printf("%s,\n", (char *)((lst)->content));
-		lst = (lst)->next;
-	}
-	ft_printf("\n");
-}
+// void printlst(t_list *lst)
+// {
+// 	while (lst)
+// 	{
+// 		ft_printf("%s,\n", (char *)((lst)->content));
+// 		lst = (lst)->next;
+// 	}
+// 	ft_printf("\n");
+// }
 
-void printlst_int(t_list *lst)
-{
-	while (lst)
-	{
-		ft_printf("%d\n", *(int *)(lst->content));
-		lst = (lst)->next;
-	}
-}
+// void printlst_int(t_list *lst)
+// {
+// 	while (lst)
+// 	{
+// 		ft_printf("%d\n", *(int *)(lst->content));
+// 		lst = (lst)->next;
+// 	}
+// }
 
 int	main(int argc, char **argv)
 {
@@ -49,9 +49,10 @@ int	main(int argc, char **argv)
 	parse_into_lst(argc, argv, &lst);
 	// ft_printf("List before sorting:\n");
 	// printlst_int(lst);
+	pre_sort(&lst, &lst_b);
 	sort_stacks(&lst, &lst_b);
 	// printlst_int(lst);
-	ft_dlstclear(&lst, free);
+	// ft_dlstclear(&lst, free);
 	return (0);
 	// ft_printf("List after sorting:\n");
 	// printlst_int(lst);
