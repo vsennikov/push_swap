@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   algo_helpers.c                                     :+:      :+:    :+:   */
+/*   pre_sort.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vsenniko <vsenniko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 16:51:37 by vsenniko          #+#    #+#             */
-/*   Updated: 2024/11/01 18:10:41 by vsenniko         ###   ########.fr       */
+/*   Updated: 2024/11/01 18:45:51 by vsenniko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,5 +81,5 @@ void	pre_sort(d_list **lst_a, d_list **lst_b)
 	while (*lst_b != NULL)
 		push_a(lst_b, &current);
 	assigned_index(lst_a, &current);
-	ft_dlstclear(&current, free);
+	// ft_dlstclear(&current, free);
 }

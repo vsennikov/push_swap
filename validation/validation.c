@@ -6,7 +6,7 @@
 /*   By: vsenniko <vsenniko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 12:12:47 by vsenniko          #+#    #+#             */
-/*   Updated: 2024/11/01 16:35:12 by vsenniko         ###   ########.fr       */
+/*   Updated: 2024/11/01 19:28:35 by vsenniko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static int	check_and_add_to_lst(d_list **lst, d_list *node)
 		if (*(int *)node->content == *(int *)(current->content))
 			return (free(node), 0);
 	}
-	current->next = node;
+	ft_dlstadd_back(lst, node);
 	// ft_printf("Put into the list value: %d\n", *(int *)current->next->content);
 	return (1);
 }

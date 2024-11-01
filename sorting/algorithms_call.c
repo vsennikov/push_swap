@@ -6,7 +6,7 @@
 /*   By: vsenniko <vsenniko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 12:52:45 by vsenniko          #+#    #+#             */
-/*   Updated: 2024/11/01 18:12:02 by vsenniko         ###   ########.fr       */
+/*   Updated: 2024/11/01 19:34:39 by vsenniko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,10 +84,14 @@ static void	sort_to_stack_b(d_list **lst_a, d_list **lst_b)
 {
 	int	pivot;
 	int	top_b;
+	int	i;
+	int	allowed_moves;
 
 	pivot = *(int *)(*lst_a)->content;
 	ft_printf("%s\n", push_b(lst_a, lst_b));
-	while (*lst_a)
+	allowed_moves = ft_dlstsize(*lst_a) - how_many_mooves_a(lst_a);
+	i = 0;
+	while (*lst_a && i != allowed_moves)
 	{
 		top_b = *(int *)(*lst_b)->content;
 		ft_printf("%s\n", push_b(lst_a, lst_b));
@@ -95,6 +99,7 @@ static void	sort_to_stack_b(d_list **lst_a, d_list **lst_b)
 			ft_printf("%s\n", rotate_b(lst_b));
 		if (top_b > *(int *)(*lst_b)->content)
 			ft_printf("%s\n", swap_b(lst_b));
+		i++;
 	}
 }
 
@@ -102,10 +107,14 @@ static void	sort_to_stack_a(d_list **lst_a, d_list **lst_b)
 {
 	int	pivot;
 	int	top_a;
+	int	i;
+	int	allowed_moves;
 
 	pivot = *(int *)(*lst_b)->content;
 	ft_printf("%s\n", push_a(lst_b, lst_a));
-	while (*lst_b)
+	allowed_moves = ft_dlstsize(*lst_b) - how_many_mooves_b(lst_b);
+	i = 0;
+	while (*lst_b && i != allowed_moves)
 	{
 		top_a = *(int *)(*lst_a)->content;
 		ft_printf("%s\n", push_a(lst_b, lst_a));
@@ -113,6 +122,7 @@ static void	sort_to_stack_a(d_list **lst_a, d_list **lst_b)
 			ft_printf("%s\n", rotate_a(lst_a));
 		if (top_a < *(int *)(*lst_a)->content)
 			ft_printf("%s\n", swap_a(lst_a));
+		i++;
 	}
 }
 
