@@ -6,7 +6,7 @@
 /*   By: vsenniko <vsenniko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 12:03:39 by vsenniko          #+#    #+#             */
-/*   Updated: 2024/10/29 14:31:48 by vsenniko         ###   ########.fr       */
+/*   Updated: 2024/11/01 12:42:24 by vsenniko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	main(int argc, char **argv)
 	parse_into_lst(argc, argv, &lst);
 	// ft_printf("List before sorting:\n");
 	// printlst_int(lst);
-	sort_stacks(&lst, &lst_b);
+	// sort_stacks(&lst, &lst_b);
 	printlst_int(lst);
 	ft_lstclear(&lst, free);
 	return (0);
