@@ -6,7 +6,7 @@
 /*   By: vsenniko <vsenniko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 12:52:45 by vsenniko          #+#    #+#             */
-/*   Updated: 2024/11/01 19:34:39 by vsenniko         ###   ########.fr       */
+/*   Updated: 2024/11/02 12:58:00 by vsenniko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,8 +89,9 @@ static void	sort_to_stack_b(d_list **lst_a, d_list **lst_b)
 
 	pivot = *(int *)(*lst_a)->content;
 	ft_printf("%s\n", push_b(lst_a, lst_b));
-	allowed_moves = ft_dlstsize(*lst_a) - how_many_mooves_a(lst_a);
+	allowed_moves = ft_dlstsize(*lst_a) - on_right_pos_a(lst_a);
 	i = 0;
+	// ft_printf("allowed moves for sort_to_b = %d", allowed_moves);
 	while (*lst_a && i != allowed_moves)
 	{
 		top_b = *(int *)(*lst_b)->content;
@@ -100,6 +101,11 @@ static void	sort_to_stack_b(d_list **lst_a, d_list **lst_b)
 		if (top_b > *(int *)(*lst_b)->content)
 			ft_printf("%s\n", swap_b(lst_b));
 		i++;
+	}
+	if (ordered(lst_a) && ordered_reversed(lst_b))
+	{
+		while (*lst_b)
+			ft_printf("%s\n", push_a(lst_b, lst_a));
 	}
 }
 
@@ -112,8 +118,9 @@ static void	sort_to_stack_a(d_list **lst_a, d_list **lst_b)
 
 	pivot = *(int *)(*lst_b)->content;
 	ft_printf("%s\n", push_a(lst_b, lst_a));
-	allowed_moves = ft_dlstsize(*lst_b) - how_many_mooves_b(lst_b);
+	allowed_moves = ft_dlstsize(*lst_b) - on_right_pos_b(lst_b);
 	i = 0;
+	// ft_printf("allowed moves for sort_to_a = %d", allowed_moves);
 	while (*lst_b && i != allowed_moves)
 	{
 		top_a = *(int *)(*lst_a)->content;
