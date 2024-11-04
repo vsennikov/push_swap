@@ -6,7 +6,7 @@
 /*   By: vsenniko <vsenniko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 12:03:39 by vsenniko          #+#    #+#             */
-/*   Updated: 2024/11/01 18:53:03 by vsenniko         ###   ########.fr       */
+/*   Updated: 2024/11/04 11:44:57 by vsenniko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	exit_error()
 // 	ft_printf("\n");
 // }
 
-// void printlst_int(t_list *lst)
+// void printlst_int(d_list *lst)
 // {
 // 	while (lst)
 // 	{
@@ -36,24 +36,37 @@ void	exit_error()
 // 		lst = (lst)->next;
 // 	}
 // }
+void printlst_int_in(d_list *lst)
+{
+	while (lst)
+	{
+		ft_printf("value = %d, index = %d\n", lst->content, lst->index);
+		lst = (lst)->next;
+	}
+}
 
 int	main(int argc, char **argv)
 {
 	d_list	*lst;
 	d_list	*lst_b;
+	int		index_max;
 	
 	if (argc < 2)
 		return (1);
 	lst = NULL;
 	lst_b = NULL;
-	parse_into_lst(argc, argv, &lst);
+	check_style_pass_next( argc, argv, &lst);
+	// printlst_int_in(lst);
 	// ft_printf("List before sorting:\n");
 	// printlst_int(lst);
-	pre_sort(&lst, &lst_b);
+	index_max = pre_sort(&lst, &lst_b);
+	// printlst_int_in(lst);
 	lst_b = NULL;
-	sort_stacks(&lst, &lst_b);
+	// ft_printf("List before sorting:\n");
+	// printlst_int_in(lst);
+	sort_stacks(&lst, &lst_b, index_max);
 	// printlst_int(lst);
-	// ft_dlstclear(&lst, free);
+	ft_dlstclear(&lst, free);
 	return (0);
 	// ft_printf("List after sorting:\n");
 	// printlst_int(lst);

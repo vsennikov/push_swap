@@ -6,7 +6,7 @@
 /*   By: vsenniko <vsenniko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 16:51:37 by vsenniko          #+#    #+#             */
-/*   Updated: 2024/11/02 12:35:58 by vsenniko         ###   ########.fr       */
+/*   Updated: 2024/11/04 11:43:31 by vsenniko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void print_index_for_stack1(d_list **lst)
 	tmp = *lst;
 	while (tmp)
 	{
-		ft_printf("After presort Value = %d, index = %d\n", *(int *)tmp->content, tmp->index);
+		ft_printf("After presort Value = %d, index = %d\n", tmp->content, tmp->index);
 		tmp = tmp->next;
 	}
 }
@@ -60,7 +60,7 @@ static void	assigned_index(d_list **lst_a, d_list **copy)
 	while (current_c)
 	{
 		current_a = *lst_a;
-		while (*(int *)current_a->content != *(int *)current_c->content)
+		while (current_a->content != current_c->content)
 			current_a = current_a->next;
 		current_a->index = i;
 		i++;
@@ -69,7 +69,7 @@ static void	assigned_index(d_list **lst_a, d_list **copy)
 	// print_index_for_stack1(lst_a);
 }
 
-void	pre_sort(d_list **lst_a, d_list **lst_b)
+int	pre_sort(d_list **lst_a, d_list **lst_b)
 {
 	d_list	*current;
 	int		smallest;
@@ -79,19 +79,20 @@ void	pre_sort(d_list **lst_a, d_list **lst_b)
 	while (current != NULL)
 	{
 		tmp = current;
-		smallest = *(int *)tmp->content;
+		smallest = tmp->content;
 		while (tmp != NULL)
 		{
-			if (*(int *)tmp->content < smallest)
-				smallest = *(int *)tmp->content;
+			if (tmp->content < smallest)
+				smallest = tmp->content;
 			tmp = tmp->next;
 		}
-		while (*(int *)current->content != smallest)
+		while (current->content != smallest)
 			rotate_a(&current);
 		push_b(&current, lst_b);
 	}
 	while (*lst_b != NULL)
 		push_a(lst_b, &current);
 	assigned_index(lst_a, &current);
+	return (max_index(lst_a));
 	// ft_dlstclear(&current, free);
 }

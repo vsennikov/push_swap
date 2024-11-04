@@ -6,7 +6,7 @@
 /*   By: vsenniko <vsenniko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 16:30:20 by vsenniko          #+#    #+#             */
-/*   Updated: 2024/11/01 19:10:39 by vsenniko         ###   ########.fr       */
+/*   Updated: 2024/11/04 11:33:52 by vsenniko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ void	ft_dlstdelone(d_list *lst, void (*del)(void*))
 {
 	if (lst == NULL || del == NULL)
 		return ;
-	del(lst->content);
-	free(lst);
+	// del(lst->content);
+	del(lst);
 }
 
 void	ft_dlstclear(d_list **lst, void (*del)(void*))
