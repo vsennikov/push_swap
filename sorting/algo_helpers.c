@@ -6,7 +6,7 @@
 /*   By: vsenniko <vsenniko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 18:11:37 by vsenniko          #+#    #+#             */
-/*   Updated: 2024/11/04 11:42:52 by vsenniko         ###   ########.fr       */
+/*   Updated: 2024/11/04 12:36:40 by vsenniko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int	on_right_pos_a(d_list **lst, int max_index)
 	if (last_node->index != max_index)
 		return (0);
 	while (last_node && last_node->prev
-		&& last_node->index == last_node->prev->index + 1)
+		&& last_node->index == (last_node->prev->index + 1))
 	{
 		i++;
 		last_node = last_node->prev;

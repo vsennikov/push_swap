@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   new_validation.c                                   :+:      :+:    :+:   */
+/*   validation.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vsenniko <vsenniko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 11:21:43 by vsenniko          #+#    #+#             */
-/*   Updated: 2024/11/04 11:29:05 by vsenniko         ###   ########.fr       */
+/*   Updated: 2024/11/04 12:34:49 by vsenniko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static int add_to_dlst(char *str, d_list **lst, int len)
 	}
 	else if (len > 11)
 		return (0);
-	node = ft_dlstnew(ft_atoi(str));
+	node = ft_dlstnew(ft_atoi(str), 0);
 	if (*lst == NULL)
 	{
 		*lst = node;

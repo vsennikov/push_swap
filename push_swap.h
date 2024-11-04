@@ -6,7 +6,7 @@
 /*   By: vsenniko <vsenniko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 12:03:50 by vsenniko          #+#    #+#             */
-/*   Updated: 2024/11/04 11:45:36 by vsenniko         ###   ########.fr       */
+/*   Updated: 2024/11/04 12:34:31 by vsenniko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ typedef struct sd_list
 	struct sd_list	*next;
 }					d_list;
 
-d_list				*ft_dlstnew(int content);
+d_list				*ft_dlstnew(int content, int index);
 void				ft_dlstadd_front(d_list **lst, d_list *new);
 d_list				*ft_dlstlast(d_list *lst);
 void				ft_dlstadd_back(d_list **lst, d_list *new);

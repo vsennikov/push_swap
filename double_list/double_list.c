@@ -6,13 +6,13 @@
 /*   By: vsenniko <vsenniko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 16:22:39 by vsenniko          #+#    #+#             */
-/*   Updated: 2024/11/04 11:23:35 by vsenniko         ###   ########.fr       */
+/*   Updated: 2024/11/04 12:34:24 by vsenniko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-d_list	*ft_dlstnew(int	content)
+d_list	*ft_dlstnew(int	content, int index)
 {
 	d_list	*node;
 
@@ -21,7 +21,7 @@ d_list	*ft_dlstnew(int	content)
 		return (NULL);
 	node->content = content;
 	node->next = NULL;
-	node->index = 0;
+	node->index = index;
 	return (node);
 }
 
