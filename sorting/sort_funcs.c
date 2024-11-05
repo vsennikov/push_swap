@@ -6,16 +6,16 @@
 /*   By: vsenniko <vsenniko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 15:34:37 by vsenniko          #+#    #+#             */
-/*   Updated: 2024/11/04 13:29:44 by vsenniko         ###   ########.fr       */
+/*   Updated: 2024/11/05 15:04:26 by vsenniko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-char	*swap_a(d_list **lst)
+char	*swap_a(t_dlist **lst)
 {
-	d_list	*first;
-	d_list	*second;
+	t_dlist	*first;
+	t_dlist	*second;
 
 	if ((*lst)->next == NULL)
 		return ("sa");
@@ -29,10 +29,10 @@ char	*swap_a(d_list **lst)
 	return ("sa");
 }
 
-char	*swap_b(d_list **lst)
+char	*swap_b(t_dlist **lst)
 {
-	d_list	*first;
-	d_list	*second;
+	t_dlist	*first;
+	t_dlist	*second;
 
 	if ((*lst)->next == NULL)
 		return ("sb");
@@ -46,7 +46,7 @@ char	*swap_b(d_list **lst)
 	return ("sb");
 }
 
-char	*swap_both(d_list **lst_a, d_list **lst_b)
+char	*swap_both(t_dlist **lst_a, t_dlist **lst_b)
 {
 	char	*res;
 
@@ -59,10 +59,10 @@ char	*swap_both(d_list **lst_a, d_list **lst_b)
 	return ("ss");
 }
 
-char	*push_b(d_list **lst_a, d_list **lst_b)
+char	*push_b(t_dlist **lst_a, t_dlist **lst_b)
 {
-	d_list	*first_a;
-	d_list	*second_a;
+	t_dlist	*first_a;
+	t_dlist	*second_a;
 
 	if (lst_a == NULL || *lst_a == NULL)
 		return ("pb");
@@ -79,20 +79,17 @@ char	*push_b(d_list **lst_a, d_list **lst_b)
 	{
 		*lst_b = ft_dlstnew(first_a->content, first_a->index);
 		if (*lst_b == NULL)
-		{
-			ft_dlstclear(lst_a, free);
-			exit_error();
-		}
+			sort_exit(lst_a);
 		return ("pb");
 	}
 	ft_dlstadd_front(lst_b, first_a);
 	return ("pb");
 }
 
-char	*push_a(d_list **lst_b, d_list **lst_a)
+char	*push_a(t_dlist **lst_b, t_dlist **lst_a)
 {
-	d_list	*first_b;
-	d_list	*second_b;
+	t_dlist	*first_b;
+	t_dlist	*second_b;
 
 	if (lst_b == NULL || *lst_b == NULL)
 		return (0);
@@ -103,16 +100,13 @@ char	*push_a(d_list **lst_b, d_list **lst_a)
 		second_b->prev = NULL;
 		*lst_b = second_b;
 	}
-	else 
+	else
 		*lst_b = NULL;
 	if (*lst_a == NULL)
 	{
 		*lst_a = ft_dlstnew(first_b->content, first_b->index);
 		if (lst_a == NULL)
-		{
-			ft_dlstclear(lst_b, free);
-			exit_error();
-		}
+			sort_exit(lst_b);
 		return ("pa");
 	}
 	ft_dlstadd_front(lst_a, first_b);

@@ -6,17 +6,17 @@
 /*   By: vsenniko <vsenniko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 16:22:39 by vsenniko          #+#    #+#             */
-/*   Updated: 2024/11/04 13:32:33 by vsenniko         ###   ########.fr       */
+/*   Updated: 2024/11/05 15:06:34 by vsenniko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-d_list	*ft_dlstnew(int	content, int index)
+t_dlist	*ft_dlstnew(int content, int index)
 {
-	d_list	*node;
+	t_dlist	*node;
 
-	node = malloc(sizeof(d_list));
+	node = malloc(sizeof(t_dlist));
 	if (node == NULL)
 		return (NULL);
 	node->content = content;
@@ -25,7 +25,7 @@ d_list	*ft_dlstnew(int	content, int index)
 	return (node);
 }
 
-void	ft_dlstadd_front(d_list **lst, d_list *new)
+void	ft_dlstadd_front(t_dlist **lst, t_dlist *new)
 {
 	if (lst == NULL || new == NULL)
 		return ;
@@ -39,7 +39,7 @@ void	ft_dlstadd_front(d_list **lst, d_list *new)
 	*lst = new;
 }
 
-d_list	*ft_dlstlast(d_list *lst)
+t_dlist	*ft_dlstlast(t_dlist *lst)
 {
 	if (lst == NULL)
 		return (NULL);
@@ -48,9 +48,9 @@ d_list	*ft_dlstlast(d_list *lst)
 	return (lst);
 }
 
-void	ft_dlstadd_back(d_list **lst, d_list *new)
+void	ft_dlstadd_back(t_dlist **lst, t_dlist *new)
 {
-	d_list	*current;
+	t_dlist	*current;
 
 	if (lst == NULL)
 		return ;
@@ -64,7 +64,7 @@ void	ft_dlstadd_back(d_list **lst, d_list *new)
 	new->prev = current;
 }
 
-int	ft_dlstsize(d_list *lst)
+int	ft_dlstsize(t_dlist *lst)
 {
 	int	i;
 

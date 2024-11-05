@@ -6,17 +6,17 @@
 /*   By: vsenniko <vsenniko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 12:44:41 by vsenniko          #+#    #+#             */
-/*   Updated: 2024/11/04 13:15:17 by vsenniko         ###   ########.fr       */
+/*   Updated: 2024/11/05 15:04:41 by vsenniko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-char	*reverse_rotate_a(d_list **lst)
+char	*reverse_rotate_a(t_dlist **lst)
 {
-	d_list	*copy;
-	d_list	*last;
-	
+	t_dlist	*copy;
+	t_dlist	*last;
+
 	if ((*lst)->next == NULL)
 		return ("rra");
 	copy = *lst;
@@ -28,11 +28,11 @@ char	*reverse_rotate_a(d_list **lst)
 	return ("rra");
 }
 
-char	*reverse_rotate_b(d_list **lst)
+char	*reverse_rotate_b(t_dlist **lst)
 {
-	d_list	*copy;
-	d_list	*last;
-	
+	t_dlist	*copy;
+	t_dlist	*last;
+
 	if ((*lst)->next == NULL)
 		return ("rrb");
 	copy = *lst;
@@ -44,9 +44,10 @@ char	*reverse_rotate_b(d_list **lst)
 	return ("rrb");
 }
 
-char	*reverse_rotate_both(d_list **lst_a, d_list **lst_b)
+char	*reverse_rotate_both(t_dlist **lst_a, t_dlist **lst_b)
 {
 	char	*res;
+
 	res = reverse_rotate_a(lst_a);
 	if (res == 0)
 		return ("rrr");

@@ -6,16 +6,16 @@
 /*   By: vsenniko <vsenniko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 16:51:37 by vsenniko          #+#    #+#             */
-/*   Updated: 2024/11/04 13:28:55 by vsenniko         ###   ########.fr       */
+/*   Updated: 2024/11/05 15:05:22 by vsenniko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-static void	create_copy_for_sort(d_list **lst, d_list **copy)
+static void	create_copy_for_sort(t_dlist **lst, t_dlist **copy)
 {
-	d_list	*current;
-	d_list	*node;
+	t_dlist	*current;
+	t_dlist	*node;
 
 	*copy = ft_dlstnew((*lst)->content, (*lst)->index);
 	if (*copy == NULL)
@@ -37,22 +37,11 @@ static void	create_copy_for_sort(d_list **lst, d_list **copy)
 		current = current->next;
 	}
 }
-void print_index_for_stack1(d_list **lst)
-{
-	d_list *tmp;
 
-	tmp = *lst;
-	while (tmp)
-	{
-		ft_printf("After presort Value = %d, index = %d\n", tmp->content, tmp->index);
-		tmp = tmp->next;
-	}
-}
-
-static void	assigned_index(d_list **lst_a, d_list **copy)
+static void	assigned_index(t_dlist **lst_a, t_dlist **copy)
 {
-	d_list	*current_a;
-	d_list	*current_c;
+	t_dlist	*current_a;
+	t_dlist	*current_c;
 	int		i;
 
 	current_c = *copy;
@@ -68,11 +57,11 @@ static void	assigned_index(d_list **lst_a, d_list **copy)
 	}
 }
 
-int	pre_sort(d_list **lst_a, d_list **lst_b)
+int	pre_sort(t_dlist **lst_a, t_dlist **lst_b)
 {
-	d_list	*current;
+	t_dlist	*current;
 	int		smallest;
-	d_list	*tmp;
+	t_dlist	*tmp;
 
 	create_copy_for_sort(lst_a, &current);
 	while (current != NULL)

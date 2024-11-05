@@ -6,7 +6,7 @@
 /*   By: vsenniko <vsenniko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 12:03:50 by vsenniko          #+#    #+#             */
-/*   Updated: 2024/11/05 13:00:27 by vsenniko         ###   ########.fr       */
+/*   Updated: 2024/11/05 15:07:20 by vsenniko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,40 +24,44 @@ typedef struct sd_list
 	int				index;
 	struct sd_list	*prev;
 	struct sd_list	*next;
-}					d_list;
+}					t_dlist;
 
-d_list				*ft_dlstnew(int content, int index);
-void				ft_dlstadd_front(d_list **lst, d_list *new);
-d_list				*ft_dlstlast(d_list *lst);
-void				ft_dlstadd_back(d_list **lst, d_list *new);
-int					ft_dlstsize(d_list *lst);
-void				ft_dlstdelone(d_list *lst, void (*del)(void *));
-void				ft_dlstclear(d_list **lst, void (*del)(void *));
+t_dlist			*ft_dlstnew(int content, int index);
+void			ft_dlstadd_front(t_dlist **lst, t_dlist *new);
+t_dlist			*ft_dlstlast(t_dlist *lst);
+void			ft_dlstadd_back(t_dlist **lst, t_dlist *new);
+int				ft_dlstsize(t_dlist *lst);
+void			ft_dlstdelone(t_dlist *lst, void (*del)(void *));
+void			ft_dlstclear(t_dlist **lst, void (*del)(void *));
 
-void				exit_error(void);
+// errors
+void			exit_error(void);
+void			sort_exit(t_dlist **lst);
+void			free_exit_validation(char **str, t_dlist **lst, int style);
 
 // validation
-void				check_style_pass_next(int argc, char **argv, d_list **lst);
-void				free_exit_validation(char **str, d_list **lst, int style);
+void			check_style_pass_next(int argc, char **argv, t_dlist **lst);
 
 // sorting
-char				*swap_a(d_list **lst);
-char				*swap_b(d_list **lst);
-char				*swap_both(d_list **lst_a, d_list **lst_b);
-char				*push_a(d_list **lst_b, d_list **lst_a);
-char				*push_b(d_list **lst_a, d_list **lst_b);
-char				*rotate_a(d_list **lst);
-char				*rotate_b(d_list **lst);
-char				*rotate_both(d_list **lst_a, d_list **lst_b);
-char				*reverse_rotate_a(d_list **lst);
-char				*reverse_rotate_b(d_list **lst);
-char				*reverse_rotate_both(d_list **lst_a, d_list **lst_b);
+char			*swap_a(t_dlist **lst);
+char			*swap_b(t_dlist **lst);
+char			*swap_both(t_dlist **lst_a, t_dlist **lst_b);
+char			*push_a(t_dlist **lst_b, t_dlist **lst_a);
+char			*push_b(t_dlist **lst_a, t_dlist **lst_b);
+char			*rotate_a(t_dlist **lst);
+char			*rotate_b(t_dlist **lst);
+char			*rotate_both(t_dlist **lst_a, t_dlist **lst_b);
+char			*reverse_rotate_a(t_dlist **lst);
+char			*reverse_rotate_b(t_dlist **lst);
+char			*reverse_rotate_both(t_dlist **lst_a, t_dlist **lst_b);
 
 // algo
-void				quick_sort(d_list **lst_a, d_list **lst_b, int max_index);
-int					max_index(d_list **lst);
-int					pre_sort(d_list **lst_a, d_list **lst_b);
-int					on_right_pos_a(d_list **lst, int max_index);
-int					on_right_pos_b(d_list **lst);
-void				chunk_sort(d_list **lst_a, d_list **lst_b, int max_index);
+int				pre_sort(t_dlist **lst_a, t_dlist **lst_b);
+int				max_index(t_dlist **lst);
+int				calculate_better_top(t_dlist **lst, int top_index);
+int				calculate_better_bottom(t_dlist **lst, int bottom_index);
+int				look_for_closer_index_top(t_dlist **lst, int start_range);
+int				look_for_closer_index_bottom(t_dlist **lst, int start_range);
+void			chunk_sort(t_dlist **lst_a, t_dlist **lst_b, int max_index);
+
 #endif

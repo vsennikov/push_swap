@@ -1,23 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_validation.c                                  :+:      :+:    :+:   */
+/*   errors_funcs.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vsenniko <vsenniko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/25 14:20:33 by vsenniko          #+#    #+#             */
-/*   Updated: 2024/11/04 11:29:09 by vsenniko         ###   ########.fr       */
+/*   Created: 2024/11/05 14:56:28 by vsenniko          #+#    #+#             */
+/*   Updated: 2024/11/05 15:03:42 by vsenniko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "push_swap.h"
 
-void free_exit_validation(char **str, d_list **lst, int style)
+void	exit_error(void)
+{
+	write(1, "Error\n", 6);
+	exit(1);
+}
+
+void	sort_exit(t_dlist **lst)
+{
+	ft_dlstclear(lst, free);
+	exit_error();
+}
+
+void	free_exit_validation(char **str, t_dlist **lst, int style)
 {
 	int	i;
 
 	i = 0;
-	if (lst != NULL && *lst !=NULL)
+	if (lst != NULL && *lst != NULL)
 		ft_dlstclear(lst, free);
 	if (style)
 		exit_error();
@@ -26,4 +38,3 @@ void free_exit_validation(char **str, d_list **lst, int style)
 	free(str);
 	exit_error();
 }
-

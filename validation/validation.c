@@ -6,7 +6,7 @@
 /*   By: vsenniko <vsenniko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 11:21:43 by vsenniko          #+#    #+#             */
-/*   Updated: 2024/11/04 13:25:18 by vsenniko         ###   ########.fr       */
+/*   Updated: 2024/11/05 15:03:55 by vsenniko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,14 @@ static int	calculate_real_len(char *str)
 	return (len);
 }
 
-static int add_to_dlst(char *str, d_list **lst, int len, int style, char **args)
+static int	add_to_dlst(char *str, t_dlist **lst, int len, int style,
+		char **args)
 {
-	d_list *node;
+	t_dlist	*node;
 
 	if (len >= 10 && len <= 11)
 	{
-		if (ft_atoi(str) > 2147483647 ||
-		 ft_atoi(str) < -2147483648)
+		if (ft_atoi(str) > 2147483647 || ft_atoi(str) < -2147483648)
 			return (0);
 	}
 	else if (len > 11)
@@ -65,10 +65,10 @@ static int add_to_dlst(char *str, d_list **lst, int len, int style, char **args)
 	return (1);
 }
 
-static int	check_for_double(d_list **lst)
+static int	check_for_double(t_dlist **lst)
 {
-	d_list	*current;
-	d_list	*next;
+	t_dlist	*current;
+	t_dlist	*next;
 	int		element;
 
 	current = *lst;
@@ -87,7 +87,7 @@ static int	check_for_double(d_list **lst)
 	return (0);
 }
 
-static void validation_parsing_checking(char **args, int style, d_list **lst)
+static void	validation_parsing_checking(char **args, int style, t_dlist **lst)
 {
 	int	i;
 	int	len;
@@ -108,9 +108,14 @@ static void validation_parsing_checking(char **args, int style, d_list **lst)
 		free(args);
 	if (check_for_double(lst))
 		free_exit_validation(args, lst, style);
+	if (ft_dlstsize(*lst) == 1)
+	{
+		ft_dlstclear(lst, free);
+		exit(1);
+	}
 }
 
-void	check_style_pass_next(int argc, char **argv, d_list **lst)
+void	check_style_pass_next(int argc, char **argv, t_dlist **lst)
 {
 	char	**args;
 	int		style;
@@ -127,4 +132,4 @@ void	check_style_pass_next(int argc, char **argv, d_list **lst)
 	else
 		args = argv;
 	validation_parsing_checking(args, style, lst);
-} 
+}

@@ -6,28 +6,16 @@
 /*   By: vsenniko <vsenniko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 18:11:37 by vsenniko          #+#    #+#             */
-/*   Updated: 2024/11/04 13:13:56 by vsenniko         ###   ########.fr       */
+/*   Updated: 2024/11/05 15:05:48 by vsenniko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <../push_swap.h>
 
-void	print_index_for_stack(d_list **lst)
-{
-	d_list	*tmp;
-
-	tmp = *lst;
-	while (tmp)
-	{
-		ft_printf("Value = %d, index = %d\n", tmp->content, tmp->index);
-		tmp = tmp->next;
-	}
-}
-
-int	max_index(d_list **lst)
+int	max_index(t_dlist **lst)
 {
 	int		i;
-	d_list	*tmp;
+	t_dlist	*tmp;
 
 	tmp = *lst;
 	i = 0;
@@ -40,60 +28,66 @@ int	max_index(d_list **lst)
 	return (i);
 }
 
-int	lowest_index(d_list **lst)
+int	calculate_better_top(t_dlist **lst, int top_index)
 {
+	t_dlist	*top;
 	int		i;
-	d_list	*tmp;
 
-	tmp = *lst;
-	i = tmp->index;
-	while (tmp)
+	top = *lst;
+	i = 0;
+	while (top)
 	{
-		if (tmp->index < i)
-			i = tmp->index;
-		tmp = tmp->next;
+		if (top->index == top_index)
+			break ;
+		i++;
+		top = top->next;
 	}
 	return (i);
 }
 
-int	on_right_pos_a(d_list **lst, int max_index)
+int	calculate_better_bottom(t_dlist **lst, int bottom_index)
 {
-	d_list	*tmp;
-	d_list	*last_node;
+	t_dlist	*bottom;
 	int		i;
 
-	tmp = *lst;
-	last_node = ft_dlstlast(tmp);
-	i = 1;
-	if (last_node->index != max_index)
-		return (0);
-	while (last_node && last_node->prev
-		&& last_node->index == (last_node->prev->index + 1))
+	bottom = *lst;
+	bottom = ft_dlstlast(bottom);
+	i = 0;
+	while (bottom)
 	{
+		if (bottom->index == bottom_index)
+			break ;
 		i++;
-		last_node = last_node->prev;
+		bottom = bottom->prev;
 	}
 	return (i);
 }
 
-int	on_right_pos_b(d_list **lst)
+int	look_for_closer_index_top(t_dlist **lst, int start_range)
 {
-	d_list	*tmp;
-	d_list	*last_node;
-	int		i;
-	int		first_index;
+	t_dlist	*top;
 
-	tmp = *lst;
-	first_index = 0;
-	last_node = ft_dlstlast(tmp);
-	i = 1;
-	if (last_node->index != first_index)
-		return (0);
-	while (last_node && last_node->prev
-		&& last_node->index == last_node->prev->index - 1)
+	top = *lst;
+	while (top)
 	{
-		i++;
-		last_node = last_node->prev;
+		if (top->index >= start_range && top->index < start_range + 5)
+			break ;
+		top = top->next;
 	}
-	return (i);
+	return (top->index);
+}
+
+int	look_for_closer_index_bottom(t_dlist **lst, int start_range)
+{
+	t_dlist	*bottom;
+
+	bottom = *lst;
+	bottom = ft_dlstlast(bottom);
+	while (bottom)
+	{
+		if (bottom->index >= start_range && bottom->index < start_range + 5)
+			break ;
+		bottom = bottom->prev;
+	}
+	return (bottom->index);
 }

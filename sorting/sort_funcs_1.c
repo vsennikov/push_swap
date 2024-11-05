@@ -6,16 +6,16 @@
 /*   By: vsenniko <vsenniko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 17:45:18 by vsenniko          #+#    #+#             */
-/*   Updated: 2024/11/04 13:14:49 by vsenniko         ###   ########.fr       */
+/*   Updated: 2024/11/05 15:04:55 by vsenniko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-char	*rotate_a(d_list **lst)
+char	*rotate_a(t_dlist **lst)
 {
-	d_list	*second;
-	d_list	*first;
+	t_dlist	*second;
+	t_dlist	*first;
 
 	if ((*lst)->next == NULL)
 		return ("ra");
@@ -28,10 +28,10 @@ char	*rotate_a(d_list **lst)
 	return ("ra");
 }
 
-char	*rotate_b(d_list **lst)
+char	*rotate_b(t_dlist **lst)
 {
-	d_list	*second;
-	d_list	*first;
+	t_dlist	*second;
+	t_dlist	*first;
 
 	if ((*lst)->next == NULL)
 		return ("rb");
@@ -44,9 +44,10 @@ char	*rotate_b(d_list **lst)
 	return ("rb");
 }
 
-char	*rotate_both(d_list **lst_a, d_list **lst_b)
+char	*rotate_both(t_dlist **lst_a, t_dlist **lst_b)
 {
 	char	*res;
+
 	res = rotate_a(lst_a);
 	if (res == 0)
 		return ("rr");
