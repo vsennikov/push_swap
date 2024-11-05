@@ -6,7 +6,7 @@
 /*   By: vsenniko <vsenniko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 15:34:37 by vsenniko          #+#    #+#             */
-/*   Updated: 2024/11/05 15:04:26 by vsenniko         ###   ########.fr       */
+/*   Updated: 2024/11/05 18:12:11 by vsenniko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ char	*push_a(t_dlist **lst_b, t_dlist **lst_a)
 	if (*lst_a == NULL)
 	{
 		*lst_a = ft_dlstnew(first_b->content, first_b->index);
-		if (lst_a == NULL)
+		if (*lst_a == NULL)
 			sort_exit(lst_b);
 		return ("pa");
 	}

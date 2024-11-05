@@ -6,7 +6,7 @@
 /*   By: vsenniko <vsenniko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 18:11:37 by vsenniko          #+#    #+#             */
-/*   Updated: 2024/11/05 15:05:48 by vsenniko         ###   ########.fr       */
+/*   Updated: 2024/11/05 18:13:11 by vsenniko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,8 @@ int	look_for_closer_index_top(t_dlist **lst, int start_range)
 			break ;
 		top = top->next;
 	}
+	if (top == NULL)
+		return (0);
 	return (top->index);
 }
 

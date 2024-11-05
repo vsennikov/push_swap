@@ -6,7 +6,7 @@
 /*   By: vsenniko <vsenniko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 16:22:39 by vsenniko          #+#    #+#             */
-/*   Updated: 2024/11/05 15:06:34 by vsenniko         ###   ########.fr       */
+/*   Updated: 2024/11/05 18:25:54 by vsenniko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ t_dlist	*ft_dlstnew(int content, int index)
 		return (NULL);
 	node->content = content;
 	node->next = NULL;
+	node->prev = NULL;
 	node->index = index;
 	return (node);
 }

@@ -6,7 +6,7 @@
 /*   By: vsenniko <vsenniko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 11:21:43 by vsenniko          #+#    #+#             */
-/*   Updated: 2024/11/05 15:03:55 by vsenniko         ###   ########.fr       */
+/*   Updated: 2024/11/05 17:37:21 by vsenniko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,7 @@ static int	calculate_real_len(char *str)
 	return (len);
 }
 
-static int	add_to_dlst(char *str, t_dlist **lst, int len, int style,
-		char **args)
+static int	add_to_dlst(char *str, t_dlist **lst, int len, int style)
 {
 	t_dlist	*node;
 
@@ -51,7 +50,7 @@ static int	add_to_dlst(char *str, t_dlist **lst, int len, int style,
 		return (0);
 	node = ft_dlstnew(ft_atoi(str), 0);
 	if (node == NULL)
-		free_exit_validation(args, lst, style);
+		return (0);
 	if (*lst == NULL)
 	{
 		*lst = node;
@@ -100,7 +99,7 @@ static void	validation_parsing_checking(char **args, int style, t_dlist **lst)
 		len = calculate_real_len(args[i]);
 		if (!len)
 			free_exit_validation(args, lst, style);
-		if (!add_to_dlst(args[i], lst, len, style, args))
+		if (!add_to_dlst(args[i], lst, len, style))
 			free_exit_validation(args, lst, style);
 		i++;
 	}
