@@ -6,7 +6,7 @@
 /*   By: vsenniko <vsenniko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 12:03:50 by vsenniko          #+#    #+#             */
-/*   Updated: 2024/11/04 13:16:29 by vsenniko         ###   ########.fr       */
+/*   Updated: 2024/11/05 13:00:27 by vsenniko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,5 @@ int					max_index(d_list **lst);
 int					pre_sort(d_list **lst_a, d_list **lst_b);
 int					on_right_pos_a(d_list **lst, int max_index);
 int					on_right_pos_b(d_list **lst);
-
+void				chunk_sort(d_list **lst_a, d_list **lst_b, int max_index);
 #endif

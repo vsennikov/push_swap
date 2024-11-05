@@ -6,7 +6,7 @@
 /*   By: vsenniko <vsenniko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 12:03:39 by vsenniko          #+#    #+#             */
-/*   Updated: 2024/11/04 13:17:15 by vsenniko         ###   ########.fr       */
+/*   Updated: 2024/11/05 13:00:34 by vsenniko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ int	main(int argc, char **argv)
 	check_style_pass_next( argc, argv, &lst);
 	index_max = pre_sort(&lst, &lst_b);
 	lst_b = NULL;
-	quick_sort(&lst, &lst_b, index_max);
+	chunk_sort(&lst, &lst_b, index_max);
+	// quick_sort(&lst, &lst_b, index_max);
 	ft_dlstclear(&lst, free);
 	return (0);
 }
