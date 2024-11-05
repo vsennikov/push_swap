@@ -6,7 +6,7 @@
 /*   By: vsenniko <vsenniko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 15:34:37 by vsenniko          #+#    #+#             */
-/*   Updated: 2024/11/04 12:36:24 by vsenniko         ###   ########.fr       */
+/*   Updated: 2024/11/04 13:29:44 by vsenniko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*swap_a(d_list **lst)
 	d_list	*second;
 
 	if ((*lst)->next == NULL)
-		return (0);
+		return ("sa");
 	first = *lst;
 	second = (*lst)->next;
 	first->prev = second;
@@ -35,7 +35,7 @@ char	*swap_b(d_list **lst)
 	d_list	*second;
 
 	if ((*lst)->next == NULL)
-		return (0);
+		return ("sb");
 	first = *lst;
 	second = (*lst)->next;
 	first->prev = second;
@@ -65,7 +65,7 @@ char	*push_b(d_list **lst_a, d_list **lst_b)
 	d_list	*second_a;
 
 	if (lst_a == NULL || *lst_a == NULL)
-		return (0);
+		return ("pb");
 	first_a = *lst_a;
 	if (first_a->next != NULL)
 	{
@@ -78,7 +78,7 @@ char	*push_b(d_list **lst_a, d_list **lst_b)
 	if (*lst_b == NULL)
 	{
 		*lst_b = ft_dlstnew(first_a->content, first_a->index);
-		if (lst_b == NULL)
+		if (*lst_b == NULL)
 		{
 			ft_dlstclear(lst_a, free);
 			exit_error();

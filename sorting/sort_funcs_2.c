@@ -6,7 +6,7 @@
 /*   By: vsenniko <vsenniko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 12:44:41 by vsenniko          #+#    #+#             */
-/*   Updated: 2024/11/04 11:33:05 by vsenniko         ###   ########.fr       */
+/*   Updated: 2024/11/04 13:15:17 by vsenniko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*reverse_rotate_a(d_list **lst)
 	d_list	*last;
 	
 	if ((*lst)->next == NULL)
-		return (0);
+		return ("rra");
 	copy = *lst;
 	last = ft_dlstlast(*lst);
 	while (copy->next->next != NULL)
@@ -34,7 +34,7 @@ char	*reverse_rotate_b(d_list **lst)
 	d_list	*last;
 	
 	if ((*lst)->next == NULL)
-		return (0);
+		return ("rrb");
 	copy = *lst;
 	last = ft_dlstlast(*lst);
 	while (copy->next->next != NULL)
@@ -49,9 +49,9 @@ char	*reverse_rotate_both(d_list **lst_a, d_list **lst_b)
 	char	*res;
 	res = reverse_rotate_a(lst_a);
 	if (res == 0)
-		return (0);
+		return ("rrr");
 	res = reverse_rotate_b(lst_b);
 	if (res == 0)
-		return (0);
-	return ("rrb");
+		return ("rrr");
+	return ("rrr");
 }

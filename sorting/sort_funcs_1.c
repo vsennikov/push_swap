@@ -6,7 +6,7 @@
 /*   By: vsenniko <vsenniko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 17:45:18 by vsenniko          #+#    #+#             */
-/*   Updated: 2024/11/04 11:32:57 by vsenniko         ###   ########.fr       */
+/*   Updated: 2024/11/04 13:14:49 by vsenniko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*rotate_a(d_list **lst)
 	d_list	*first;
 
 	if ((*lst)->next == NULL)
-		return (0);
+		return ("ra");
 	first = *lst;
 	second = first->next;
 	first->next = NULL;
@@ -34,7 +34,7 @@ char	*rotate_b(d_list **lst)
 	d_list	*first;
 
 	if ((*lst)->next == NULL)
-		return (0);
+		return ("rb");
 	first = *lst;
 	second = first->next;
 	first->next = NULL;
@@ -49,10 +49,10 @@ char	*rotate_both(d_list **lst_a, d_list **lst_b)
 	char	*res;
 	res = rotate_a(lst_a);
 	if (res == 0)
-		return (0);
+		return ("rr");
 	if (lst_b == NULL || *lst_b == NULL)
 	{
-		return (0);
+		return ("rr");
 	}
 	res = rotate_b(lst_b);
 	if (res == 0)

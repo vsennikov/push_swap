@@ -6,7 +6,7 @@
 /*   By: vsenniko <vsenniko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 16:51:37 by vsenniko          #+#    #+#             */
-/*   Updated: 2024/11/04 12:35:28 by vsenniko         ###   ########.fr       */
+/*   Updated: 2024/11/04 13:28:55 by vsenniko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	create_copy_for_sort(d_list **lst, d_list **copy)
 	current = (*lst)->next;
 	while (current)
 	{
-		node = ft_dlstnew(current->content, (*lst)->index);
+		node = ft_dlstnew(current->content, current->index);
 		if (node == NULL)
 		{
 			ft_dlstclear(lst, free);
@@ -66,7 +66,6 @@ static void	assigned_index(d_list **lst_a, d_list **copy)
 		i++;
 		current_c = current_c->next;
 	}
-	// print_index_for_stack1(lst_a);
 }
 
 int	pre_sort(d_list **lst_a, d_list **lst_b)
@@ -93,6 +92,6 @@ int	pre_sort(d_list **lst_a, d_list **lst_b)
 	while (*lst_b != NULL)
 		push_a(lst_b, &current);
 	assigned_index(lst_a, &current);
+	ft_dlstclear(&current, free);
 	return (max_index(lst_a));
-	// ft_dlstclear(&current, free);
 }

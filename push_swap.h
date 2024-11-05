@@ -6,7 +6,7 @@
 /*   By: vsenniko <vsenniko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 12:03:50 by vsenniko          #+#    #+#             */
-/*   Updated: 2024/11/04 12:34:31 by vsenniko         ###   ########.fr       */
+/*   Updated: 2024/11/04 13:16:29 by vsenniko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ char				*reverse_rotate_b(d_list **lst);
 char				*reverse_rotate_both(d_list **lst_a, d_list **lst_b);
 
 // algo
-void				sort_stacks(d_list **lst_a, d_list **lst_b, int max_index);
+void				quick_sort(d_list **lst_a, d_list **lst_b, int max_index);
 int					max_index(d_list **lst);
 int					pre_sort(d_list **lst_a, d_list **lst_b);
 int					on_right_pos_a(d_list **lst, int max_index);
