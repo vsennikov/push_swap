@@ -6,7 +6,7 @@
 /*   By: vsenniko <vsenniko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 16:22:39 by vsenniko          #+#    #+#             */
-/*   Updated: 2024/11/05 18:25:54 by vsenniko         ###   ########.fr       */
+/*   Updated: 2024/11/06 14:00:48 by vsenniko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ void	ft_dlstadd_front(t_dlist **lst, t_dlist *new)
 		return ;
 	if (*lst == NULL)
 	{
+		new->next = NULL;
+		new->prev = NULL;
 		*lst = new;
 		return ;
 	}

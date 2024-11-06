@@ -6,7 +6,7 @@
 /*   By: vsenniko <vsenniko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 14:56:28 by vsenniko          #+#    #+#             */
-/*   Updated: 2024/11/05 15:03:42 by vsenniko         ###   ########.fr       */
+/*   Updated: 2024/11/06 15:43:37 by vsenniko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,22 @@ void	sort_exit(t_dlist **lst)
 	exit_error();
 }
 
-void	free_exit_validation(char **str, t_dlist **lst, int style)
+void	free_double_dem(char **d_arr)
 {
 	int	i;
 
 	i = 0;
+	while (d_arr[i])
+		free(d_arr[i++]);
+	free(d_arr);
+}
+
+void	free_exit_validation(char **str, t_dlist **lst, int style)
+{
 	if (lst != NULL && *lst != NULL)
 		ft_dlstclear(lst, free);
 	if (style)
 		exit_error();
-	while (str[i])
-		free(str[i++]);
-	free(str);
+	free_double_dem(str);
 	exit_error();
 }

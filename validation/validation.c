@@ -6,7 +6,7 @@
 /*   By: vsenniko <vsenniko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 11:21:43 by vsenniko          #+#    #+#             */
-/*   Updated: 2024/11/05 17:37:21 by vsenniko         ###   ########.fr       */
+/*   Updated: 2024/11/06 15:46:16 by vsenniko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static int	calculate_real_len(char *str)
 	return (len);
 }
 
-static int	add_to_dlst(char *str, t_dlist **lst, int len, int style)
+static int	add_to_dlst(char *str, t_dlist **lst, int len)
 {
 	t_dlist	*node;
 
@@ -54,12 +54,8 @@ static int	add_to_dlst(char *str, t_dlist **lst, int len, int style)
 	if (*lst == NULL)
 	{
 		*lst = node;
-		if (!style)
-			free(str);
 		return (1);
 	}
-	if (!style)
-		free(str);
 	ft_dlstadd_back(lst, node);
 	return (1);
 }
@@ -99,14 +95,14 @@ static void	validation_parsing_checking(char **args, int style, t_dlist **lst)
 		len = calculate_real_len(args[i]);
 		if (!len)
 			free_exit_validation(args, lst, style);
-		if (!add_to_dlst(args[i], lst, len, style))
+		if (!add_to_dlst(args[i], lst, len))
 			free_exit_validation(args, lst, style);
 		i++;
 	}
-	if (!style)
-		free(args);
 	if (check_for_double(lst))
 		free_exit_validation(args, lst, style);
+	if (!style)
+		free_double_dem(args);
 	if (ft_dlstsize(*lst) == 1)
 	{
 		ft_dlstclear(lst, free);

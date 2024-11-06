@@ -6,7 +6,7 @@
 /*   By: vsenniko <vsenniko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 18:11:37 by vsenniko          #+#    #+#             */
-/*   Updated: 2024/11/05 18:13:11 by vsenniko         ###   ########.fr       */
+/*   Updated: 2024/11/06 12:17:38 by vsenniko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,14 +63,14 @@ int	calculate_better_bottom(t_dlist **lst, int bottom_index)
 	return (i);
 }
 
-int	look_for_closer_index_top(t_dlist **lst, int start_range)
+int	look_for_closer_index_top(t_dlist **lst, int start_range, int chucnk_size)
 {
 	t_dlist	*top;
 
 	top = *lst;
 	while (top)
 	{
-		if (top->index >= start_range && top->index < start_range + 5)
+		if (top->index >= start_range && top->index < start_range + chucnk_size)
 			break ;
 		top = top->next;
 	}
@@ -79,7 +79,7 @@ int	look_for_closer_index_top(t_dlist **lst, int start_range)
 	return (top->index);
 }
 
-int	look_for_closer_index_bottom(t_dlist **lst, int start_range)
+int	look_for_closer_index_bottom(t_dlist **lst, int start_range, int chucnk_size)
 {
 	t_dlist	*bottom;
 
@@ -87,9 +87,11 @@ int	look_for_closer_index_bottom(t_dlist **lst, int start_range)
 	bottom = ft_dlstlast(bottom);
 	while (bottom)
 	{
-		if (bottom->index >= start_range && bottom->index < start_range + 5)
+		if (bottom->index >= start_range && bottom->index < start_range + chucnk_size)
 			break ;
 		bottom = bottom->prev;
 	}
+	if (bottom == NULL)
+		return (0);
 	return (bottom->index);
 }

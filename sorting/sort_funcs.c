@@ -6,7 +6,7 @@
 /*   By: vsenniko <vsenniko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 15:34:37 by vsenniko          #+#    #+#             */
-/*   Updated: 2024/11/05 18:12:11 by vsenniko         ###   ########.fr       */
+/*   Updated: 2024/11/06 14:05:07 by vsenniko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,13 +75,6 @@ char	*push_b(t_dlist **lst_a, t_dlist **lst_b)
 	}
 	else
 		*lst_a = NULL;
-	if (*lst_b == NULL)
-	{
-		*lst_b = ft_dlstnew(first_a->content, first_a->index);
-		if (*lst_b == NULL)
-			sort_exit(lst_a);
-		return ("pb");
-	}
 	ft_dlstadd_front(lst_b, first_a);
 	return ("pb");
 }
@@ -102,13 +95,6 @@ char	*push_a(t_dlist **lst_b, t_dlist **lst_a)
 	}
 	else
 		*lst_b = NULL;
-	if (*lst_a == NULL)
-	{
-		*lst_a = ft_dlstnew(first_b->content, first_b->index);
-		if (*lst_a == NULL)
-			sort_exit(lst_b);
-		return ("pa");
-	}
 	ft_dlstadd_front(lst_a, first_b);
 	return ("pa");
 }

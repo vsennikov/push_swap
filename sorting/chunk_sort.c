@@ -6,7 +6,7 @@
 /*   By: vsenniko <vsenniko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 11:21:46 by vsenniko          #+#    #+#             */
-/*   Updated: 2024/11/05 15:05:36 by vsenniko         ###   ########.fr       */
+/*   Updated: 2024/11/06 15:50:04 by vsenniko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static void	call_rotate_or_reverse(t_dlist **lst_a, t_dlist **lst_b,
 	}
 }
 
-static void	mooving_stuff(t_dlist **lst_a, t_dlist **lst_b, int index)
+static void	mooving_stuff(t_dlist **lst_a, t_dlist **lst_b, int index, int chunk_size)
 {
 	int	bottom_index;
 	int	top_index;
@@ -66,11 +66,11 @@ static void	mooving_stuff(t_dlist **lst_a, t_dlist **lst_b, int index)
 	int	i;
 
 	i = 0;
-	while (*lst_a && i != 5)
+	while (*lst_a && i != chunk_size)
 	{
-		top_index = look_for_closer_index_top(lst_a, index);
+		top_index = look_for_closer_index_top(lst_a, index, chunk_size);
 		top_value = calculate_better_top(lst_a, top_index);
-		bottom_index = look_for_closer_index_bottom(lst_a, index);
+		bottom_index = look_for_closer_index_bottom(lst_a, index, chunk_size);
 		bottom_value = calculate_better_bottom(lst_a, bottom_index);
 		if (top_value < bottom_value)
 			call_rotate_or_reverse(lst_a, lst_b, top_index, 1);
@@ -80,15 +80,15 @@ static void	mooving_stuff(t_dlist **lst_a, t_dlist **lst_b, int index)
 	}
 }
 
-void	chunk_sort(t_dlist **lst_a, t_dlist **lst_b, int max_index)
+void	chunk_sort(t_dlist **lst_a, t_dlist **lst_b, int max_index, int	chunck_size)
 {
 	int	index;
 
 	index = 0;
 	while (*lst_a)
 	{
-		mooving_stuff(lst_a, lst_b, index);
-		index += 5;
+		mooving_stuff(lst_a, lst_b, index, chunck_size);
+		index += chunck_size;
 	}
 	push_back(lst_a, lst_b, max_index);
 }

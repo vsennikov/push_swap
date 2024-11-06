@@ -6,7 +6,7 @@
 /*   By: vsenniko <vsenniko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 12:03:50 by vsenniko          #+#    #+#             */
-/*   Updated: 2024/11/05 15:07:20 by vsenniko         ###   ########.fr       */
+/*   Updated: 2024/11/06 15:53:33 by vsenniko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,10 @@ void			ft_dlstclear(t_dlist **lst, void (*del)(void *));
 void			exit_error(void);
 void			sort_exit(t_dlist **lst);
 void			free_exit_validation(char **str, t_dlist **lst, int style);
-
+void			free_double_dem(char **d_arr);
 // validation
 void			check_style_pass_next(int argc, char **argv, t_dlist **lst);
-
+int				check_if_ordered(t_dlist **lst);
 // sorting
 char			*swap_a(t_dlist **lst);
 char			*swap_b(t_dlist **lst);
@@ -60,8 +60,7 @@ int				pre_sort(t_dlist **lst_a, t_dlist **lst_b);
 int				max_index(t_dlist **lst);
 int				calculate_better_top(t_dlist **lst, int top_index);
 int				calculate_better_bottom(t_dlist **lst, int bottom_index);
-int				look_for_closer_index_top(t_dlist **lst, int start_range);
-int				look_for_closer_index_bottom(t_dlist **lst, int start_range);
-void			chunk_sort(t_dlist **lst_a, t_dlist **lst_b, int max_index);
-
+int				look_for_closer_index_top(t_dlist **lst, int start_range, int chucnk_size);
+int				look_for_closer_index_bottom(t_dlist **lst, int start_range, int chucnk_size);
+void			chunk_sort(t_dlist **lst_a, t_dlist **lst_b, int max_index, int	chunck_size);
 #endif

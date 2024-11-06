@@ -1,37 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   clear_double_list.c                                :+:      :+:    :+:   */
+/*   ordered.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vsenniko <vsenniko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/01 16:30:20 by vsenniko          #+#    #+#             */
-/*   Updated: 2024/11/06 13:45:56 by vsenniko         ###   ########.fr       */
+/*   Created: 2024/11/06 15:51:08 by vsenniko          #+#    #+#             */
+/*   Updated: 2024/11/06 15:54:28 by vsenniko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	ft_dlstdelone(t_dlist *lst, void (*del)(void *))
+int	check_if_ordered(t_dlist **lst)
 {
-	if (lst == NULL || del == NULL)
-		return ;
-	free(lst);
-}
-
-void	ft_dlstclear(t_dlist **lst, void (*del)(void *))
-{
-	t_dlist	*current;
-	t_dlist	*tmp;
-
-	if (lst == NULL || del == NULL)
-		return ;
-	current = *lst;
-	while (current != NULL)
+	t_dlist *tmp;
+	int		curr_index;
+	
+	tmp = *lst;
+	curr_index = 0;
+	while (tmp)
 	{
-		tmp = current;
-		current = current->next;
-		ft_dlstdelone(tmp, del);
+		if (curr_index != tmp->index)
+			return (0);
+		curr_index++;
+		tmp = tmp->next;
 	}
-	*lst = NULL;
+	return (1);
 }
