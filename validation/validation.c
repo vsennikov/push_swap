@@ -6,7 +6,7 @@
 /*   By: vsenniko <vsenniko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 11:21:43 by vsenniko          #+#    #+#             */
-/*   Updated: 2024/11/06 15:46:16 by vsenniko         ###   ########.fr       */
+/*   Updated: 2024/11/08 16:32:38 by vsenniko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static int	add_to_dlst(char *str, t_dlist **lst, int len)
 	}
 	else if (len > 11)
 		return (0);
-	node = ft_dlstnew(ft_atoi(str), 0);
+	node = ft_dlstnew((int)ft_atoi(str), 0);
 	if (node == NULL)
 		return (0);
 	if (*lst == NULL)
@@ -87,11 +87,11 @@ static void	validation_parsing_checking(char **args, int style, t_dlist **lst)
 	int	i;
 	int	len;
 
-	i = 0;
-	if (style)
-		i = 1;
+	i = style;
 	while (args[i])
 	{
+		if ((args[i][0] == '-' || args[i][0] == '+') && args[i][1] == 0)
+			free_exit_validation(args, lst, style);
 		len = calculate_real_len(args[i]);
 		if (!len)
 			free_exit_validation(args, lst, style);
@@ -122,6 +122,11 @@ void	check_style_pass_next(int argc, char **argv, t_dlist **lst)
 		args = ft_split(argv[1], ' ');
 		if (args == NULL)
 			exit_error();
+		if (args[0] == NULL)
+		{
+			free(args);
+			exit_error();
+		}
 		style = 0;
 	}
 	else

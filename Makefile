@@ -1,5 +1,5 @@
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror
 SRCS = double_list/clear_double_list.c double_list/double_list.c sorting/algo_helpers.c \
 sorting/chunk_sort.c sorting/pre_sort.c sorting/sort_funcs_1.c sorting/sort_funcs_2.c \
 sorting/sort_funcs.c validation/validation.c errors_funcs.c main.c validation/ordered.c \

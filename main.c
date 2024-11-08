@@ -6,11 +6,20 @@
 /*   By: vsenniko <vsenniko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 12:03:39 by vsenniko          #+#    #+#             */
-/*   Updated: 2024/11/07 13:46:55 by vsenniko         ###   ########.fr       */
+/*   Updated: 2024/11/08 15:57:11 by vsenniko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+static void	check_for_special_case(int argc, char **argv)
+{
+	if (argc == 2)
+	{
+		if (argv[1][0] == 0)
+			exit_error();
+	}
+}
 
 int	main(int argc, char **argv)
 {
@@ -20,6 +29,7 @@ int	main(int argc, char **argv)
 
 	if (argc < 2)
 		return (1);
+	check_for_special_case(argc, argv);
 	lst = NULL;
 	lst_b = NULL;
 	check_style_pass_next(argc, argv, &lst);
