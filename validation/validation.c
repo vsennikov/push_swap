@@ -6,11 +6,11 @@
 /*   By: vsenniko <vsenniko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 11:21:43 by vsenniko          #+#    #+#             */
-/*   Updated: 2024/11/08 16:32:38 by vsenniko         ###   ########.fr       */
+/*   Updated: 2024/11/08 16:41:35 by vsenniko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <../push_swap.h>
+#include "../push_swap.h"
 
 static int	calculate_real_len(char *str)
 {
