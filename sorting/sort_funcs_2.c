@@ -6,7 +6,7 @@
 /*   By: vsenniko <vsenniko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 12:44:41 by vsenniko          #+#    #+#             */
-/*   Updated: 2024/11/05 15:04:41 by vsenniko         ###   ########.fr       */
+/*   Updated: 2024/11/08 12:04:14 by vsenniko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,15 +44,15 @@ char	*reverse_rotate_b(t_dlist **lst)
 	return ("rrb");
 }
 
-char	*reverse_rotate_both(t_dlist **lst_a, t_dlist **lst_b)
-{
-	char	*res;
+// char	*reverse_rotate_both(t_dlist **lst_a, t_dlist **lst_b)
+// {
+// 	char	*res;
 
-	res = reverse_rotate_a(lst_a);
-	if (res == 0)
-		return ("rrr");
-	res = reverse_rotate_b(lst_b);
-	if (res == 0)
-		return ("rrr");
-	return ("rrr");
-}
+// 	res = reverse_rotate_a(lst_a);
+// 	if (res == 0)
+// 		return ("rrr");
+// 	res = reverse_rotate_b(lst_b);
+// 	if (res == 0)
+// 		return ("rrr");
+// 	return ("rrr");
+// }

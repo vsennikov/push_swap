@@ -6,7 +6,7 @@
 /*   By: vsenniko <vsenniko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 11:21:46 by vsenniko          #+#    #+#             */
-/*   Updated: 2024/11/07 12:07:31 by vsenniko         ###   ########.fr       */
+/*   Updated: 2024/11/08 12:06:21 by vsenniko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,8 @@ static void	call_rotate_or_reverse(t_dlist **lst_a, t_dlist **lst_b,
 	}
 }
 
-static void	mooving_stuff(t_dlist **lst_a, t_dlist **lst_b, int index, int chunk_size)
+static void	mooving_stuff(t_dlist **lst_a, t_dlist **lst_b, int index,
+		int chunk_size)
 {
 	int	bottom_index;
 	int	top_index;
@@ -80,7 +81,8 @@ static void	mooving_stuff(t_dlist **lst_a, t_dlist **lst_b, int index, int chunk
 	}
 }
 
-void	chunk_sort(t_dlist **lst_a, t_dlist **lst_b, int max_index, int	chunck_size)
+void	chunk_sort(t_dlist **lst_a, t_dlist **lst_b, int max_index,
+		int chunck_size)
 {
 	int	index;
 

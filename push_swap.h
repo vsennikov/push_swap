@@ -6,7 +6,7 @@
 /*   By: vsenniko <vsenniko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 12:03:50 by vsenniko          #+#    #+#             */
-/*   Updated: 2024/11/07 13:45:08 by vsenniko         ###   ########.fr       */
+/*   Updated: 2024/11/08 12:05:04 by vsenniko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,15 +45,15 @@ int					check_if_ordered(t_dlist **lst);
 // sorting
 char				*swap_a(t_dlist **lst);
 char				*swap_b(t_dlist **lst);
-char				*swap_both(t_dlist **lst_a, t_dlist **lst_b);
 char				*push_a(t_dlist **lst_b, t_dlist **lst_a);
 char				*push_b(t_dlist **lst_a, t_dlist **lst_b);
 char				*rotate_a(t_dlist **lst);
 char				*rotate_b(t_dlist **lst);
-char				*rotate_both(t_dlist **lst_a, t_dlist **lst_b);
 char				*reverse_rotate_a(t_dlist **lst);
 char				*reverse_rotate_b(t_dlist **lst);
-char				*reverse_rotate_both(t_dlist **lst_a, t_dlist **lst_b);
+// char				*swap_both(t_dlist **lst_a, t_dlist **lst_b);
+// char				*rotate_both(t_dlist **lst_a, t_dlist **lst_b);
+// char				*reverse_rotate_both(t_dlist **lst_a, t_dlist **lst_b);
 
 // algo
 int					pre_sort(t_dlist **lst_a, t_dlist **lst_b);

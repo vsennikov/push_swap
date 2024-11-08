@@ -6,7 +6,7 @@
 /*   By: vsenniko <vsenniko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 18:11:37 by vsenniko          #+#    #+#             */
-/*   Updated: 2024/11/06 12:17:38 by vsenniko         ###   ########.fr       */
+/*   Updated: 2024/11/08 12:05:26 by vsenniko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,8 @@ int	look_for_closer_index_top(t_dlist **lst, int start_range, int chucnk_size)
 	return (top->index);
 }
 
-int	look_for_closer_index_bottom(t_dlist **lst, int start_range, int chucnk_size)
+int	look_for_closer_index_bottom(t_dlist **lst, int start_range,
+		int chucnk_size)
 {
 	t_dlist	*bottom;
 
@@ -87,7 +88,8 @@ int	look_for_closer_index_bottom(t_dlist **lst, int start_range, int chucnk_size
 	bottom = ft_dlstlast(bottom);
 	while (bottom)
 	{
-		if (bottom->index >= start_range && bottom->index < start_range + chucnk_size)
+		if (bottom->index >= start_range && bottom->index < start_range
+			+ chucnk_size)
 			break ;
 		bottom = bottom->prev;
 	}
