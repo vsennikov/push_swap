@@ -51,9 +51,6 @@ char				*rotate_a(t_dlist **lst);
 char				*rotate_b(t_dlist **lst);
 char				*reverse_rotate_a(t_dlist **lst);
 char				*reverse_rotate_b(t_dlist **lst);
-// char				*swap_both(t_dlist **lst_a, t_dlist **lst_b);
-// char				*rotate_both(t_dlist **lst_a, t_dlist **lst_b);
-// char				*reverse_rotate_both(t_dlist **lst_a, t_dlist **lst_b);
 
 // algo
 int					pre_sort(t_dlist **lst_a, t_dlist **lst_b);
